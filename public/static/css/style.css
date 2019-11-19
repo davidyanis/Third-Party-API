@@ -1,0 +1,98 @@
+/* Color Theme */
+.Flat-UI-1-hex { color: #2C3E50; }
+.Flat-UI-2-hex { color: #E74C3C; }
+.Flat-UI-3-hex { color: #ECF0F1; }
+.Flat-UI-4-hex { color: #3498DB; }
+.Flat-UI-5-hex { color: #2980B9; } 
+
+
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+}
+
+h1 {
+    font-size: 2.7em;
+    font-family: 'Bebas Neue', cursive;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    height: 80vh;
+    flex-wrap: wrap;
+    color: #ECF0F1;
+    background-color: #2C3E50;
+    background-image: url("https://www.transparenttextures.com/patterns/crissxcross.png");
+}
+
+.left-divider {
+    text-align: center;
+    width: 50%;
+    margin-top: 9em;
+}
+
+.imageContainer {
+    background-color: #ECF0F1;
+    height: 80vh;
+    width: 50%;
+}
+
+button {
+    font-size: 1.5em;
+    border-radius: 0.2em;
+    border: none;
+    color: #ECF0F1;
+    background-color: #E74C3C;
+    padding: 0.5em;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #2980B9;
+}
+
+button:focus {
+    outline: 0;
+}
+
+section {
+    background-color: #ECF0F1;
+}
+
+.locationContainer > div{
+    padding-top: 4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.locationContainer > div > h2{
+    font-size: 3em;
+    margin: 0;
+    text-align: center;
+    padding-right: 0.5em;
+    
+}
+
+.image {
+    max-width: 100%;
+    height: 80vh;
+}
+
+#postContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 4em;
+}
+
+.post-card {
+    max-width: 60%;
+}
+
+#loaderContainer {
+    display: flex;
+    justify-content: center;
+}
