@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Snabbaste nyhetssajten! - Hela sverige</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/script/script.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Bebas+Neue|Quicksand&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body onload="initSite()">
+    <header>
+        <div class="left-divider">
+            <h1 style="color: #E74C3C">Snabbaste nyhetssajten? ja.</h1>
+            <h3>En plats för att se aktuella händelser nära dig..</h3>
+        </div>
+        <div class="imageContainer">
+            <img class="image" src="/static/images/train.jpg">
+        </div>
+    </header>
+    <section class="locationContainer">
+        <div>
+            <h1 style="color: #2C3E50;">Jag vill se händelser från...&nbsp;&nbsp;&nbsp;</h1>
+            <div class="buttonsContainer">
+                <button onclick="initAPI()" class="button" name="button" value="malmo">Malmö </button>
+                <button onclick="initAPI()" class="button" name="button" value="goteborg">Göteborg </button>
+                <button onclick="initAPI()" class="button" name="button" value="stockholm">Stockholm</button>
+                eller
+                <button class="button">Nära mig</button>
+            </div>
+        </div>
+    </section>
+    <section id="postContainer">
+        <div id="loaderContainer">
+            <img src="/static/images/loader.gif" >
+        </div>
+    </section>
+</body>
+</html>
