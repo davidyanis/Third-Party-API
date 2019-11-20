@@ -1,53 +1,62 @@
 
 
 async function initSite() {
-  loader(false)
-  initAPI()
+    loader(false)
+
+    let getAllPosts = "";
+    initAPI(getAllPosts)
 }
 
 
-async function initAPI() {
+async function initAPI(location) {
     loader(true) 
+    document.getElementById("postContainer").innerHTML = ""
 
-    const buttonName = document.getElementsByName("button");
-
-    buttonName.forEach(function(btnValue) {
-  
-      btnValue.onclick = function() {
-        var clickedLocation = btnValue.value
-
-        clicked = btnValue.value
-      }
+    const response = await axios.post('/handelser/brott', {
+        location: location.value || location,
     })
 
-   
- 
-    const response = await axios.post('/lista/brott', {
-        location: clickedLocation
-    })
-
-    response.data.forEach(function(post) {
-      renderPost(post)
-    })
+    renderPost(response.data)
 
     loader(false)
 }
 
-function renderPost(post) {
+async function locationAPI() {
+    loader(true) 
+    document.getElementById("postContainer").innerHTML = ""
+
+    const response = await axios.get('/handelser/brott/nearby');
+
+    renderPost(response.data)
+
+    loader(false)
+}
+
+function renderPost(response_data) {
     const postContainer = document.getElementById("postContainer");
+    response_data.forEach(function(post) {
+      
+        const cardContainer = document.createElement("div");
+        cardContainer.className = "post-card"
 
-    const cardContainer = document.createElement("div");
-    cardContainer.className = "post-card"
+        const titleElement = document.createElement("h3");
+        const descriptionElement = document.createElement("span");
+        const locationElement = document.createElement("h5");
+        const sourceElement = document.createElement("a");
+        sourceElement.style.color = "#3498DB";
 
-    const titleElement = document.createElement("h3");
-    const descriptionElement = document.createElement("span");
+        postContainer.appendChild(cardContainer);
+        cardContainer.appendChild(titleElement);
+        cardContainer.appendChild(descriptionElement);
+        cardContainer.appendChild(locationElement);
+        cardContainer.appendChild(sourceElement);
 
-    postContainer.appendChild(cardContainer);
-    cardContainer.appendChild(titleElement);
-    cardContainer.appendChild(descriptionElement);
-
-    titleElement.innerHTML += post.description
-    descriptionElement.innerHTML += post.content
+        titleElement.innerHTML = post.description;
+        descriptionElement.innerHTML = post.content;
+        locationElement.innerHTML = post.location_string + ' - ' + post.date_human;
+        sourceElement.href = post.external_source_link || "";
+        sourceElement.innerHTML = post.external_source_link || "";
+    })
 }
   
 function loader(show) {
