@@ -15,7 +15,7 @@ body {
 }
 
 h1 {
-    font-size: 2.7em;
+    font-size: 2.9em;
     font-family: 'Bebas Neue', cursive;
 }
 
@@ -31,15 +31,10 @@ header {
 
 .left-divider {
     text-align: center;
-    width: 50%;
+    flex-grow: 2;
     margin-top: 9em;
 }
 
-.imageContainer {
-    background-color: #ECF0F1;
-    height: 80vh;
-    width: 50%;
-}
 
 button {
     font-size: 1.5em;
@@ -78,8 +73,15 @@ section {
 }
 
 .image {
-    max-width: 100%;
+    margin-top: 4em;
+    max-width: 40em;
+}
+
+.imageContainer {
+    background-color: #E74C3C;
+    background-image: url("https://www.transparenttextures.com/patterns/crissxcross.png");
     height: 80vh;
+    flex-grow: 1;
 }
 
 #postContainer {
@@ -89,7 +91,7 @@ section {
 }
 
 .post-card {
-    max-width: 60%;
+    flex-grow: 1;
     background-color: #FFF;
     border-radius: 0.2em;
     padding: 3em;
