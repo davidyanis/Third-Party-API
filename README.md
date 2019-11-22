@@ -11,4 +11,5 @@ https://github.com/davidyanis/Third-Party-API
 
 ## API used
 https://brottsplatskartan.se/sida/api
+
 https://ipinfo.io/json
