@@ -1,22 +1,28 @@
 
 
 async function initSite() {
-    loader(false)
+    try {
+        loader(false)
+        const getAllPosts = "";
 
-    let getAllPosts = "";
-    initAPI(getAllPosts)
+        newsAPI(getAllPosts)
+    } catch (error) {
+        console.error(error)
+    }
 }
 
-
-async function initAPI(location) {
+async function newsAPI(location) {
     loader(true) 
     document.getElementById("postContainer").innerHTML = ""
-
     const response = await axios.post('/handelser/brott', {
         location: location.value || location,
     })
 
-    renderPost(response.data)
+    if (response.status != 200) {
+        throw new Error ("Errorrrr");
+    } else {
+        renderPost(response.data)
+    }
 
     loader(false)
 }
@@ -27,9 +33,13 @@ async function locationAPI() {
 
     const response = await axios.get('/handelser/brott/nearby');
 
-    renderPost(response.data)
-
-    loader(false)
+    if (response.status != 200) {
+        throw new Error ("Errorrrr");
+    } else {
+        loader(false)
+        renderPost(response.data)
+        return response.data
+    }
 }
 
 function renderPost(response_data) {
@@ -42,18 +52,20 @@ function renderPost(response_data) {
         const titleElement = document.createElement("h3");
         const descriptionElement = document.createElement("span");
         const locationElement = document.createElement("h5");
+        locationElement.style.color = "#E74C3C";
+        locationElement.style.marginTop = "0";
         const sourceElement = document.createElement("a");
         sourceElement.style.color = "#3498DB";
 
         postContainer.appendChild(cardContainer);
         cardContainer.appendChild(titleElement);
-        cardContainer.appendChild(descriptionElement);
         cardContainer.appendChild(locationElement);
+        cardContainer.appendChild(descriptionElement);
         cardContainer.appendChild(sourceElement);
 
         titleElement.innerHTML = post.description;
+        locationElement.innerHTML = post.title_location + ' - ' + post.date_human;
         descriptionElement.innerHTML = post.content;
-        locationElement.innerHTML = post.location_string + ' - ' + post.date_human;
         sourceElement.href = post.external_source_link || "";
         sourceElement.innerHTML = post.external_source_link || "";
     })
