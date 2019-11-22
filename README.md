@@ -1,6 +1,6 @@
 # Third-Party-API
 
-## Mini project to get latest news from swedish police. Temporarily only supports location "Malmö" and "Near me".
+Mini project to get latest news from swedish police. Temporarily only supports location "Malmö" and "Near me".
 
 ### To run the server type
 
